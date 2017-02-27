@@ -43,7 +43,7 @@ class TodosApp extends Component {
         <h2>{this.props.applicationName}</h2>
         <TodosHeader onClick={this.addTodo} />
         <p/>
-        <TodoList onClickDone={this.markTodoDone} todos={this.state.todos} />
+        <TodosList onClickDone={this.markTodoDone} todos={this.state.todos} />
       </div>
     )
   }
