@@ -6,7 +6,7 @@ const TodoItem = ({todo, onClickDone}) => {
     <span>
       <input
         type="checkbox"
-        onChange={() => onClickDone(todo)}
+        onChange={() => onClickDone()}
         disabled={todo.isDone}
         checked={todo.isDone} /> &nbsp;
       {todo.isDone ? <strike>{todo.text}</strike> : todo.text}
@@ -17,7 +17,6 @@ const TodoItem = ({todo, onClickDone}) => {
 
 TodoItem.propTypes = {
   todo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     isDone: PropTypes.bool.isRequired
   }).isRequired,

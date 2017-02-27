@@ -4,15 +4,15 @@ import TodoItem from './todoItem';
 
 class TodoList extends Component {
   render() {
-    const todos = _.sortBy(this.props.todos, ['id']);
+    const todoIds = _.sortBy(_.keys(this.props.todos));
     const todoItems = _.map(
-      _.sortBy(this.props.todos, ['id']),
-      todo => {
+      todoIds,
+      todoId => {
         return (
           <TodoItem
-            key={todo.id}
-            todo={todo}
-            onClickDone={() => this.props.onClickDone(todo.id)}
+            key={todoId}
+            todo={this.props.todos[todoId]}
+            onClickDone={() => this.props.onClickDone(todoId)}
           />
         );
       }
@@ -24,7 +24,12 @@ class TodoList extends Component {
 }
 
 TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  todos: PropTypes.shape({
+    id: PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      isDone: PropTypes.bool.isReqiured
+    })
+  }).isRequired,
   onClickDone: PropTypes.func
 };
 

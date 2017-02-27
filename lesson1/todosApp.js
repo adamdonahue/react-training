@@ -7,7 +7,7 @@ class TodosApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: []
+      todos: {}
     };
     this._id = 0;
     this.addTodo = this.addTodo.bind(this);
@@ -15,19 +15,27 @@ class TodosApp extends Component {
   }
   addTodo(text) {
     this.setState((prevState, props) => {
-      const todos = [...this.state.todos];
-      todos.push({id: this._id++, text: text, isDone: false});
       return {
-        todos
+        todos: Object.assign({}, prevState.todos, {
+          [this._id++]: {
+            text: text,
+            isDone: false
+          }
+        })
       };
     });
   }
   markTodoDone(id) {
-    const todos = _.reject(this.state.todos, {id: id});    
-    let todo = _.find(this.state.todos, {id: id});
-    todo = Object.assign({}, todo, {isDone: true});
-    todos.push(todo);
-    this.setState({ todos });
+    this.setState((prevState, props) => {
+      return {
+        todos: Object.assign({}, prevState.todos, {
+          [id]: {
+            text: prevState.todos[id].text,
+            isDone: true
+          }
+        })
+      };
+    });
   }
   render() {
     return (
