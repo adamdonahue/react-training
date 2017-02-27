@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './app';
+import TodosApp from './todosApp';
 
 render(
-  <App />,
+  <TodosApp applicationName="To Dos" />,    
   document.getElementById('react-app')
 );
