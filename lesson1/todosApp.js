@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import TodosHeader from './todosHeader';
-import TodoList from './todoList';
+import TodosList from './todosList';
 import _ from 'lodash';
 
 class TodosApp extends Component {

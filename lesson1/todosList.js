@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 import TodoItem from './todoItem';
 
-class TodoList extends Component {
+class TodosList extends Component {
   render() {
     const todoIds = _.sortBy(_.keys(this.props.todos));
     const todoItems = _.map(
@@ -23,7 +23,7 @@ class TodoList extends Component {
   }
 }
 
-TodoList.propTypes = {
+TodosList.propTypes = {
   todos: PropTypes.shape({
     id: PropTypes.shape({
       text: PropTypes.string.isRequired,
@@ -33,8 +33,8 @@ TodoList.propTypes = {
   onClickDone: PropTypes.func
 };
 
-TodoList.defaultProps = {
+TodosList.defaultProps = {
   onClickDone: _.noop
 };
 
-export default TodoList;
+export default TodosList;
