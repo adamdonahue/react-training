@@ -3,7 +3,6 @@ import _ from 'lodash';
 import TodoItem from './todoItem';
 
 const TodosList = ({todos, onClickDone}) => {
-  console.log(todos);
   const todoIds = _.sortBy(_.keys(todos));
   const todoItems = _.map(
     todoIds,
