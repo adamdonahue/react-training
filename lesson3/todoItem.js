@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import _ from 'lodash';
+import { markTodoDone } from './actions';
 
 const TodoItem = ({todo, onClickDone}) => {
+  console.log(todo);
   return (
     <span>
       <input
@@ -28,4 +31,16 @@ TodoItem.defaultProps = {
   onClickDone: _.noop
 };
 
-export default TodoItem;
+const mapStateToProps = (state, props) => {
+  return {
+    todo: state.todos[props.todoId]
+  };
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    onClickDone: () => dispatch(markTodoDone(props.todoId))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoItem);

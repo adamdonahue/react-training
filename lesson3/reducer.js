@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /*
  * A reducer is a pure function that accepts a given state
  * and an action and returns a (possibly new) state reflecting
@@ -39,6 +41,7 @@ const initialState = {
  */
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
+  console.log(type, payload);
   switch (type) {
     case ADD_TODO_LIST: {
       return Object.assign({}, state, {
@@ -49,13 +52,27 @@ export default function reducer(state = initialState, action) {
     }
 
     case DELETE_TODO_LIST: {
-      // UNIMPLEMENTED.
-      return state;
+      const todoIds = state.todoLists[payload.listName];
+      return Object.assign({}, state, {
+        todoLists: _.omit(state.todoLists, [payload.listName]),
+        todos: _.omit(state.todos, todoIds)
+      });
     }
 
-    case ADD_TODO:
-      // UNIMPLEMENTED.
-      return state;
+    case ADD_TODO: {
+      return Object.assign({}, state, {
+        todoLists: Object.assign({}, state.todoLists, {
+          [payload.listName]: [...state.todoLists[payload.listName], payload.id]
+        }),
+        todos: Object.assign({}, state.todos, {
+          [payload.id]: {
+            id: payload.id,
+            name: payload.name,
+            isDone: false
+          }
+        })
+      });
+    }
 
     case DELETE_TODO:
       // UNIMPLEMENTED.
