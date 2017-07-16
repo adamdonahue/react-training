@@ -6,7 +6,8 @@ module.exports = {
 
   entry: {
     lesson1: './lesson1/index.js',
-    lesson2: './lesson2/index.js'
+    lesson2: './lesson2/index.js',
+    lesson3: './lesson3/index.js'
   },
 
   output: {
