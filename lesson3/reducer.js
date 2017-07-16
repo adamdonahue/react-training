@@ -14,7 +14,6 @@ import {
   ADD_TODO_LIST,
   DELETE_TODO_LIST,
   ADD_TODO,
-  DELETE_TODO,
   MOVE_TODO,
   MARK_TODO_DONE
 } from './actions';
@@ -74,14 +73,21 @@ export default function reducer(state = initialState, action) {
       });
     }
 
-    case DELETE_TODO:
-      // UNIMPLEMENTED.
-      return state;
-
     case MARK_TODO_DONE:
-      // UNIMPLEMENTED.
-      return state;
+      return Object.assign({}, state, {
+        todos: Object.assign({}, state.todos, {
+          [payload.id]: Object.assign({}, state.todos[payload.id], { isDone: true })
+        })
+      });
 
+    case MOVE_TODO:
+      const { id, fromListName, toListName } = payload;
+      return Object.assign({}, state, {
+        todoLists: Object.assign({}, state.todoLists, {
+          [fromListName]: _.filter(state.todoLists[fromListName], todoId => todoId !== id),
+          [toListName]: [ ...state.todoLists[toListName], id ]
+        })
+      });
     default:
       return state;
   }
