@@ -2,22 +2,19 @@ import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 import TodoItem from './todoItem';
 
-const TodosList = ({todos, onClickDone}) => {
+const TodosList = ({ todos, onClickDone }) => {
   const todoIds = _.sortBy(_.keys(todos));
-  const todoItems = _.map(
-    todoIds,
-    todoId => {
-      return (
-        <TodoItem
-          key={todoId}
-          todo={todos[todoId]}
-          onClickDone={() => onClickDone(todoId)}
-        />
-      );
-    }
-  );
+  const todoItems = _.map(todoIds, todoId => {
+    return (
+      <TodoItem
+        key={todoId}
+        todo={todos[todoId]}
+        onClickDone={() => onClickDone(todoId)}
+      />
+    );
+  });
   return <div>{todoItems}</div>;
-}
+};
 
 TodosList.propTypes = {
   todos: PropTypes.shape({

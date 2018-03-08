@@ -12,12 +12,14 @@ const TodoItem = ({ todo, onClickDone, connectDragSource }) => {
         type="checkbox"
         onChange={() => onClickDone()}
         disabled={todo.isDone}
-        checked={todo.isDone} /> &nbsp;
+        checked={todo.isDone}
+      />{' '}
+      &nbsp;
       {todo.isDone ? <strike>{todo.name}</strike> : todo.name}
-      <br/>
+      <br />
     </div>
   );
-}
+};
 
 /*
  * We want to make a TodoItem draggable.  We wrap it as a DragSource
@@ -60,7 +62,7 @@ const DraggableTodoItem = DragSource(
   connect => {
     return {
       connectDragSource: connect.dragSource()
-    }
+    };
   }
 )(TodoItem);
 
@@ -68,12 +70,12 @@ const mapStateToProps = (state, props) => {
   return {
     todo: state.todos[props.todoId]
   };
-}
+};
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
     onClickDone: () => dispatch(markTodoDone(props.todoId))
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DraggableTodoItem);

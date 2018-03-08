@@ -21,7 +21,7 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: function (module) {
+      minChunks: function(module) {
         // As long as the vendor module exists and is used once, include it.
         return module.context && module.context.indexOf('node_modules') !== -1;
       }

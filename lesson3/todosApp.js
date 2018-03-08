@@ -13,7 +13,7 @@ const TodosApp = () => {
       <TodosLists />
     </div>
   );
-}
+};
 
 /*
  * The wrapping a top-level component with a drag-and-drop context,

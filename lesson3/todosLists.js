@@ -30,10 +30,10 @@ class TodosLists extends Component {
   render() {
     const todoLists = this.props.listNames.map(listName => {
       return <TodoList key={listName} listName={listName} />;
-    })
+    });
     return (
       <div>
-        <input onChange={this.changeListName} value={this.state.listName}/>
+        <input onChange={this.changeListName} value={this.state.listName} />
         <button onClick={this.addTodoList}>Add List</button>
 
         {todoLists}

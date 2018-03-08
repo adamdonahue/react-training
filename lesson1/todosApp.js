@@ -42,15 +42,15 @@ class TodosApp extends Component {
       <div>
         <h2>{this.props.applicationName}</h2>
         <TodosHeader onClick={this.addTodo} />
-        <p/>
+        <p />
         <TodosList onClickDone={this.markTodoDone} todos={this.state.todos} />
       </div>
-    )
+    );
   }
 }
 
 TodosApp.propTypes = {
-  applicationName: PropTypes.string.isRequired  
+  applicationName: PropTypes.string.isRequired
 };
 
 export default TodosApp;

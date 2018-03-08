@@ -10,20 +10,26 @@ class TodosHeader extends Component {
     this.onChange = this.onChange.bind(this);
   }
   onChange(e) {
-    this.setState({todoNameInput: e.target.value});
+    this.setState({ todoNameInput: e.target.value });
   }
   render() {
     return (
       <div>
-        <input type="text" onChange={this.onChange} value={this.state.todoNameInput} />
-        <button onClick={() => this.props.onClick(this.state.todoNameInput)}>Add</button>
+        <input
+          type="text"
+          onChange={this.onChange}
+          value={this.state.todoNameInput}
+        />
+        <button onClick={() => this.props.onClick(this.state.todoNameInput)}>
+          Add
+        </button>
       </div>
     );
   }
 }
 
 TodosHeader.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func
 };
 
 TodosHeader.defaultProps = {

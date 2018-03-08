@@ -7,18 +7,11 @@ import { TODO } from './dragAndDropTypes';
 import { moveTodo } from './actions';
 
 const TodosList = ({ todoIds, listName, connectDropTarget }) => {
-  const todoItems = _.map(
-    todoIds,
-    todoId => {
-      return (
-        <TodoItem listName={listName} key={todoId} todoId={todoId} />
-       );
-     }
-   );
-   return connectDropTarget(
-     <div>{todoItems}</div>
-   );
-}
+  const todoItems = _.map(todoIds, todoId => {
+    return <TodoItem listName={listName} key={todoId} todoId={todoId} />;
+  });
+  return connectDropTarget(<div>{todoItems}</div>);
+};
 
 /*
  * We need listName here in order to expose it as part of the list,
@@ -48,14 +41,15 @@ const TargetableTodosList = DropTarget(
   connect => {
     return {
       connectDropTarget: connect.dropTarget()
-    }
+    };
   }
 )(TodosList);
 
 const mapDispatchToProps = dispatch => {
   return {
-    moveTodo: (todoId, fromListName, toListName) => dispatch(moveTodo(todoId, fromListName, toListName))
+    moveTodo: (todoId, fromListName, toListName) =>
+      dispatch(moveTodo(todoId, fromListName, toListName))
   };
-}
+};
 
 export default connect(undefined, mapDispatchToProps)(TargetableTodosList);

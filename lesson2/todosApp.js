@@ -5,32 +5,31 @@ import TodosList from './todosList';
 import _ from 'lodash';
 import { addTodo, markTodoDone } from './actions';
 
-const TodosApp = ({applicationName, todos, addTodo, markTodoDone}) => {
+const TodosApp = ({ applicationName, todos, addTodo, markTodoDone }) => {
   return (
     <div>
       <h2>{applicationName}</h2>
       <TodosHeader onClick={addTodo} />
-      <p/>
+      <p />
       <TodosList onClickDone={markTodoDone} todos={todos} />
     </div>
   );
-}
+};
 
 const mapStateToProps = state => {
   const { todos } = state;
   return {
     applicationName: 'To Do List',
-    todos 
+    todos
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTodo: (name) => dispatch(addTodo(name)),
-    markTodoDone: (id) => dispatch(markTodoDone(id))
-  }
+    addTodo: name => dispatch(addTodo(name)),
+    markTodoDone: id => dispatch(markTodoDone(id))
+  };
 };
-
 
 /*
  * The connect function is responsible for associating

@@ -25,7 +25,7 @@ import {
 // Kept in a normalized structure.
 const initialState = {
   todoLists: {},
-  todos:     {}
+  todos: {}
 };
 
 /*
@@ -75,7 +75,9 @@ export default function reducer(state = initialState, action) {
     case MARK_TODO_DONE:
       return Object.assign({}, state, {
         todos: Object.assign({}, state.todos, {
-          [payload.id]: Object.assign({}, state.todos[payload.id], { isDone: true })
+          [payload.id]: Object.assign({}, state.todos[payload.id], {
+            isDone: true
+          })
         })
       });
 
@@ -83,8 +85,11 @@ export default function reducer(state = initialState, action) {
       const { id, fromListName, toListName } = payload;
       return Object.assign({}, state, {
         todoLists: Object.assign({}, state.todoLists, {
-          [fromListName]: _.filter(state.todoLists[fromListName], todoId => todoId !== id),
-          [toListName]: [ ...state.todoLists[toListName], id ]
+          [fromListName]: _.filter(
+            state.todoLists[fromListName],
+            todoId => todoId !== id
+          ),
+          [toListName]: [...state.todoLists[toListName], id]
         })
       });
     default:

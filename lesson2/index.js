@@ -11,7 +11,6 @@ import reducer from './reducer';
  * the current state.
  */
 const store = createStore(reducer);
-  
 
 /*
  * Provider is a React-specific component that associates with
@@ -20,7 +19,7 @@ const store = createStore(reducer);
  */
 render(
   <Provider store={store}>
-   <TodosApp />
+    <TodosApp />
   </Provider>,
   document.getElementById('react-app')
 );

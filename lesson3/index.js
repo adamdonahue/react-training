@@ -11,7 +11,6 @@ import reducer from './reducer';
  * the current state.
  */
 const store = createStore(reducer);
-  
 
 /*
  * Provider is a React-specific component that associates with

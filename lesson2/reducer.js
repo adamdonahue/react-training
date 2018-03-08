@@ -11,7 +11,6 @@
  */
 import { ADD_TODO, MARK_TODO_DONE } from './actions';
 
-
 /*
  * There is always an initial state to which further reductions
  * are applied.
@@ -19,7 +18,6 @@ import { ADD_TODO, MARK_TODO_DONE } from './actions';
 const initialState = {
   todos: {}
 };
-
 
 /*
  * A common pattern in a reducer is to use a switch statement
@@ -35,7 +33,7 @@ export default function reducer(state = initialState, action) {
     case ADD_TODO:
       return Object.assign({}, state, {
         todos: Object.assign({}, state.todos, {
-            [action.todo.id]: action.todo
+          [action.todo.id]: action.todo
         })
       });
     case MARK_TODO_DONE:

@@ -33,7 +33,10 @@ class TodoList extends Component {
         <input value={this.state.todoName} onChange={this.changeTodoName} />
         <button onClick={this.addTodo}>Add Todo</button>
 
-        <TodosList listName={this.props.listName} todoIds={this.props.todoIds} />
+        <TodosList
+          listName={this.props.listName}
+          todoIds={this.props.todoIds}
+        />
       </div>
     );
   }

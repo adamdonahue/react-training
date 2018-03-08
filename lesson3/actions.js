@@ -10,7 +10,7 @@ export const ADD_TODO_LIST = 'ADD_TODO_LIST';
 export const DELETE_TODO_LIST = 'REMOVE_TODO_LIST';
 export const ADD_TODO = 'ADD_TODO';
 export const MOVE_TODO = 'MOVE_TODO';
-export const MARK_TODO_DONE = 'MARK_TODO_DONE'
+export const MARK_TODO_DONE = 'MARK_TODO_DONE';
 
 /*
  * Action creators are functions that return actions. Each action
@@ -44,7 +44,7 @@ export function deleteTodoList(listName) {
     payload: {
       listName
     }
-  }
+  };
 }
 
 let todoId = 0;
@@ -62,7 +62,7 @@ export function addTodo(listName, name) {
     payload: {
       id: todoId++,
       name,
-      listName,
+      listName
     }
   };
 }

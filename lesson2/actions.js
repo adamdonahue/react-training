@@ -6,8 +6,7 @@
  * that is responsible for doing the work.
  */
 export const ADD_TODO = 'ADD_TODO';
-export const MARK_TODO_DONE = 'MARK_TODO_DONE'
-
+export const MARK_TODO_DONE = 'MARK_TODO_DONE';
 
 /*
  * Action creators are functions that return actions. Each action

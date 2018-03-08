@@ -1,19 +1,21 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 
-const TodoItem = ({todo, onClickDone}) => {
+const TodoItem = ({ todo, onClickDone }) => {
   return (
     <span>
       <input
         type="checkbox"
         onChange={() => onClickDone()}
         disabled={todo.isDone}
-        checked={todo.isDone} /> &nbsp;
+        checked={todo.isDone}
+      />{' '}
+      &nbsp;
       {todo.isDone ? <strike>{todo.text}</strike> : todo.text}
-      <br/>
+      <br />
     </span>
   );
-}
+};
 
 TodoItem.propTypes = {
   todo: PropTypes.shape({
